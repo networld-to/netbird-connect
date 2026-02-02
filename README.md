@@ -34,7 +34,7 @@ jobs:
 
       - name: Netbird Connect
         id: netbird
-        uses: https://github.com/networld-to/netbird-connect@v1
+        uses: https://github.com/networld-to/netbird-connect@v1.1.0
         with:
           setup-key: ${{ secrets.NETBIRD_SETUP_KEY }}
           hostname: "my-custom-hostname"
