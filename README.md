@@ -6,14 +6,16 @@ This GitHub Action allows you to connect your workflow to your Netbird network. 
 
 ## Inputs
 
-| Input           | Description                                                              | Required | Default Value                     |
-| --------------- | ------------------------------------------------------------------------ | -------- |-----------------------------------|
-| `setup-key`     | Setup key obtained from the Management Service Dashboard (used to register the peer). | Yes      | N/A                               |
-| `hostname`      | Sets a custom hostname that is visible from the Netbird Dashboard. If not provided, a default hostname will be generated. | No       | ' '                               |
-| `management-url`| This is the URL of the Netbird Management Service. If not provided, a default URL will be used. | No            | 'https://api.netbird.io:443' |
-| `args`          | Optional additional arguments to pass to the `netbird up` command.     | No       | ' '                               |
+| Input            | Description                                                                                                               | Required | Default Value                |
+| ---------------- | ------------------------------------------------------------------------------------------------------------------------- | -------- | ---------------------------- |
+| `setup-key`      | Setup key obtained from the Management Service Dashboard (used to register the peer).                                     | Yes      | N/A                          |
+| `hostname`       | Sets a custom hostname that is visible from the Netbird Dashboard. If not provided, a default hostname will be generated. | No       | ' '                          |
+| `management-url` | This is the URL of the Netbird Management Service. If not provided, a default URL will be used.                           | No       | 'https://api.netbird.io:443' |
+| `args`           | Optional additional arguments to pass to the `netbird up` command.                                                        | No       | ' '                          |
 
 ## Example Usage
+
+Specifying the full URL allows the use of this action in Forgejo and without the action to be published to the Github Action marketplace.
 
 ```yaml
 name: Connect to Netbird
@@ -32,9 +34,10 @@ jobs:
 
       - name: Netbird Connect
         id: netbird
-        uses: Alemiz112/netbird-connect@v1
+        uses: https://github.com/networld-to/netbird-connect@v1
         with:
           setup-key: ${{ secrets.NETBIRD_SETUP_KEY }}
-          hostname: 'my-custom-hostname'
-          management-url: 'https://my-netbird-management-url.com'
-          args: '--custom-arg value'
+          hostname: "my-custom-hostname"
+          management-url: "https://my-netbird-management-url.com"
+          args: "--custom-arg value"
+```
